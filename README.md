@@ -481,5 +481,5 @@ spec:
 
 ## Step 8 : Navigate to the load balancer DNS to access the website
 
-  https://k8s-default-assignme-997a8e79e2-661382993.ap-south-1.elb.amazonaws.com
+  [https://k8s-default-assignme-997a8e79e2-661382993.ap-south-1.elb.amazonaws.com](http://k8s-default-assignme-997a8e79e2-661382993.ap-south-1.elb.amazonaws.com/)
 
