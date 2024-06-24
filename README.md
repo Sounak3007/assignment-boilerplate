@@ -10,12 +10,14 @@ This is a sample code repository for an Express application with sockets.
 # Website deployment to AWS EKS Clusters 
 
 ## Steps Followed:
-1. Create a dockerfile for the application
-2. Build and push the image to dockerhub
-3. Create EKS clusters with 3 nodes
-4. Create IAM roles for deployment and to access the cluster
-5. Configure the necessary deployemt files for the service to be deployed.
-6. Create AWS load balancer by deploying the ingress and access the website.
+1. Create EKS clusters with 3 nodes
+2. Create a dockeriamge for the application
+3. Create IAM roles for deployment and to access the cluster
+4. Configure the necessary deployemt files for the service to be deployed.
+5. Create AWS load balancer by deploying the ingress and access the website.
+
+## Create EKS clusters with 3 nodes
+
 
 ## Step 1 : Create the Docker Image. 
 
