@@ -7,9 +7,14 @@
 4. Configure the necessary deployemt files for the service to be deployed.
 5. Create AWS load balancer by deploying the ingress and access the website.
 
-## Setup AWS-Cli 
+## Setup AWS .
 
 1. Download aws-cli in your local
+```
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+unzip awscli-bundle.zip
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+```
 2. Install Kubernetes 
 3. Create EKS in AWS with 3 nodes. 
 4. Verify if the cluster is running by the following command : 
@@ -20,6 +25,7 @@ aws eks --region ap-south-1 describe-cluster --name cluster1 --query cluster.sta
 ```
 aws eks --region ap-south-1 update-kubeconfig --name cluster-test
 ```
+
 ## Step 1 : Create the Docker Image. 
 
 ### Dockerfile
