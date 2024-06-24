@@ -1,0 +1,22 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: backend-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: assignment-boilerplate-deploymemt
+  minReplicas: 1
+  maxReplicas: 3
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 60
+
+
+#test autoscaling 
+#kubectl exec -it budgetapp-deployment-7549b6fddb-xvb5v -- bash -c " while sleep 0.01s; do wget http://localhost:3000; done"

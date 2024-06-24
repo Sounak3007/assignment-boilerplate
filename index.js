@@ -1,6 +1,7 @@
 const http = require("http");
 const app = require("./app");
 const port = require("./config.json").port || 6041;
+const host = '0.0.0.0';
 const server = http.createServer(app);
 const version = require("./package.json").version;
 const io = require("socket.io")();
@@ -21,6 +22,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(port, () => {
+server.listen(port, host, () => {
   console.log(`Server@${version} running on: ${port}`);
 });

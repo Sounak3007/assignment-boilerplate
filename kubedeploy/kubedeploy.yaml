@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: assignment-boilerplate-deploymemt
+  labels:
+    app: assignment-boilerplate
+  annotations: 
+    sidecar.speedscale.com/cpu-request: 200m
+    sidecar.speedscale.com/cpu-limit: 500m
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: assignment-boilerplate
+  template:
+    metadata:
+      labels:
+        app: assignment-boilerplate
+    spec:
+      containers:
+        - name: assignment-boilerplate
+          image: docker.io/sounak3007/assignment-boilerplate:demo2
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 6041
+              protocol: TCP
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "100Mi"
+              # ephemeral-storage: "100Mi"
+            limits:
+              cpu: "500m"
+              memory: "700Mi"
+              # ephemeral-storage: "700Mi"
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: assignment-boilerplate-svc
+  labels:
+    app: assignment-boilerplate    
+spec:
+  type: NodePort
+  ports:
+    - port: 6041
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: assignment-boilerplate
