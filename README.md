@@ -1,12 +1,3 @@
-# Node.js Boilerplate
-
-This is a sample code repository for an Express application with sockets.
-
-## Steps to initialize
-
-- `npm install`
-- `npm start`
-
 # Website deployment to AWS EKS Clusters 
 
 ## Steps Followed:
@@ -16,9 +7,19 @@ This is a sample code repository for an Express application with sockets.
 4. Configure the necessary deployemt files for the service to be deployed.
 5. Create AWS load balancer by deploying the ingress and access the website.
 
-## Create EKS clusters with 3 nodes
+## Setup AWS-Cli 
 
-
+1. Download aws-cli in your local
+2. Install Kubernetes 
+3. Create EKS in AWS with 3 nodes. 
+4. Verify if the cluster is running by the following command : 
+```
+aws eks --region ap-south-1 describe-cluster --name cluster1 --query cluster.status
+```
+5. Configure your Kubeconfig to point towards the newly created cluster via the following command
+```
+aws eks --region ap-south-1 update-kubeconfig --name cluster-test
+```
 ## Step 1 : Create the Docker Image. 
 
 ### Dockerfile
@@ -102,7 +103,8 @@ spec:
 
 ```
 ## Implement Kubernetes service:
-- Kubernetes service type Load Balancer deployment yaml :
+
+- Kubernetes service type NodePort deployment yaml :
   
 ```
 apiVersion: v1
@@ -159,7 +161,7 @@ spec:
 ```  
 - test autoscaling
 ```
-kubectl exec -it <pod-name> -- bash -c " while sleep 0.01s; do wget http://localhost:6041; done"
+  kubectl exec -it <pod-name> -- bash -c " while sleep 0.01s; do wget http://localhost:6041; done"
 
 ```
 ## Step 4 : Configure service account for Load Balancer
@@ -178,6 +180,8 @@ metadata:
 ```
 
 ## Step 5 : Ingress file for Load Balancer deployment in AWS :
+
+- Deploying the ingress will crete a load balancer in AWS via which we can acess the site
 
 ```
 
@@ -202,6 +206,5 @@ spec:
                 number: 6041
 
 ```
-
 
 
