@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: assignment-boilerplate
-          image: docker.io/sounak3007/assignment-boilerplate:demo2
+          image: docker.io/sounak3007/assignment-boilerplate:eks5
           imagePullPolicy: Always
           ports:
             - name: http
