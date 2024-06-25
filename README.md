@@ -6,6 +6,7 @@
 3. Create IAM roles for deployment and to access the cluster
 4. Configure the necessary deployemt files for the service to be deployed.
 5. Create AWS load balancer by deploying the ingress and access the website.
+6. Test autoscaling. 
 
 ## Setup AWS .
 
